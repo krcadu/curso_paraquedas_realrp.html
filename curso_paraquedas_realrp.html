@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Teórico de Paraquedismo - REAL RP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            background: url('https://i.pinimg.com/736x/06/87/a3/0687a3300a6766da8ec4e00b1429312d.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(88, 28, 135, 0.85) 0%, rgba(26, 11, 46, 0.9) 100%);
+            z-index: -1;
+        }
+        
+        .container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 0%, #e0c3fc 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .header p { font-size: 1.2rem; opacity: 0.95; color: #f3e8ff; font-weight: 500; }
+        .paraquedas-icon { font-size: 4rem; margin-bottom: 10px; }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            margin-bottom: 20px;
+            animation: slideUp 0.5s ease;
+        }
+        
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #581c87;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #9333ea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border-left: 5px solid #9333ea;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .info-box h3 { color: #581c87; margin-bottom: 10px; }
+        .info-box ul { margin-left: 20px; color: #444; line-height: 1.8; }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .warning-box h3 { color: #92400e; margin-bottom: 10px; }
+        .warning-box ul { margin-left: 20px; color: #78350f; line-height: 1.8; }
+        
+        .danger-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 5px solid #ef4444;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .danger-box h3 { color: #991b1b; margin-bottom: 10px; }
+        .danger-box ul { margin-left: 20px; color: #7f1d1d; line-height: 1.8; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; font-size: 0.95rem; }
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #9333ea;
+            box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.1);
+        }
+        
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+        
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #581c87 0%, #9333ea 100%);
+            color: white;
+            width: 100%;
+        }
+        
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(147, 51, 234, 0.4); }
+        .btn-secondary { background: #6b7280; color: white; }
+        .btn-success { background: #10b981; color: white; }
+        .btn:disabled { background: #9ca3af; cursor: not-allowed; transform: none; }
+        
+        .hidden { display: none !important; }
+        
+        .quiz-box {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #9333ea;
+        }
+        
+        .quiz-header { display: flex; align-items: center; margin-bottom: 20px; }
+        
+        .quiz-number {
+            background: linear-gradient(135deg, #581c87 0%, #9333ea 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .quiz-question { font-weight: 600; color: #333; font-size: 1.1rem; line-height: 1.4; }
+        
+        .quiz-category {
+            display: inline-block;
+            background: #e9d5ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #581c87;
+            margin-left: auto;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .options-container { display: flex; flex-direction: column; gap: 10px; }
+        
+        .option-btn {
+            background: white;
+            border: 2px solid #e9d5ff;
+            border-radius: 10px;
+            padding: 15px 20px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            color: #495057;
+            line-height: 1.4;
+        }
+        
+        .option-btn:hover { border-color: #9333ea; background: #faf5ff; transform: translateX(5px); }
+        
+        .option-btn.selected {
+            background: linear-gradient(135deg, #581c87 0%, #9333ea 100%);
+            color: white;
+            border-color: #9333ea;
+        }
+        
+        .option-label { font-weight: 700; color: #9333ea; margin-right: 8px; }
+        .option-btn.selected .option-label { color: #fff; }
+        
+        .timer-blocked {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 2px solid #ef4444;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .timer-blocked h2 { color: #991b1b; margin-bottom: 15px; }
+        .countdown { font-size: 2.5rem; font-weight: 700; color: #dc2626; font-family: monospace; }
+        
+        .certificado {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #10b981;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .certificado h2 { color: #065f46; font-size: 2rem; margin-bottom: 20px; }
+        .certificado-icon { font-size: 5rem; margin-bottom: 20px; }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9d5ff;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #581c87, #9333ea); transition: width 0.3s ease; }
+        
+        .error-msg { color: #ef4444; font-size: 0.85rem; margin-top: 5px; display: none; }
+        .form-group.error input { border-color: #ef4444; }
+        .form-group.error .error-msg { display: block; }
+        
+        .tabs { display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px; }
+        
+        .tab {
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active { background: white; color: #581c87; }
+        
+        .history-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .history-name { font-weight: 700; color: #333; font-size: 1.1rem; }
+        .history-date { color: #888; font-size: 0.85rem; }
+        .score-high { background: #d1fae5; color: #065f46; padding: 5px 15px; border-radius: 20px; font-weight: 700; }
+        .score-low { background: #fee2e2; color: #991b1b; padding: 5px 15px; border-radius: 20px; font-weight: 700; }
+        
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .gear-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9d5ff;
+        }
+        
+        .gear-item .icon { font-size: 2rem; margin-bottom: 8px; }
+        .gear-item h4 { color: #581c87; margin-bottom: 5px; font-size: 0.9rem; }
+        .gear-item p { color: #666; font-size: 0.85rem; }
+        
+        .step-box {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #9333ea;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #581c87 0%, #9333ea 100%);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="paraquedas-icon">🪂</div>
+            <h1>REAL RP</h1>
+            <p>Curso Teórico de Paraquedismo</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" data-tab="curso">📚 Curso</button>
+            <button class="tab" data-tab="prova">📝 Prova</button>
+            <button class="tab" data-tab="historico">📋 Histórico</button>
+        </div>
+        
+        <div id="tab-curso">
+            <div class="card" id="cadastro-card">
+                <h2 class="section-title">👤 Cadastro do Aluno</h2>
+                
+                <div class="form-group" id="group-nome">
+                    <label>Nome Completo do Personagem *</label>
+                    <input type="text" id="nome" placeholder="Ex: João Silva">
+                    <span class="error-msg">Campo obrigatório</span>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group" id="group-id">
+                        <label>ID do Cidadão *</label>
+                        <input type="text" id="id-personagem" placeholder="Ex: 12345">
+                        <span class="error-msg">Campo obrigatório</span>
+                    </div>
+                    
+                    <div class="form-group" id="group-idade">
+                        <label>Idade *</label>
+                        <input type="number" id="idade" placeholder="Ex: 25" min="18" max="80">
+                        <span class="error-msg">Idade entre 18 e 80 anos</span>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" id="btn-acessar-curso">
+                    Acessar Curso →
+                </button>
+            </div>
+            
+            <div class="card hidden" id="curso-content">
+                <h2 class="section-title">📖 Conteúdo do Curso</h2>
+                
+                <div class="warning-box">
+                    <h3>⚠️ Equipamentos Obrigatórios de Segurança</h3>
+                    <div class="gear-grid">
+                        <div class="gear-item">
+                            <div class="icon">🪂</div>
+                            <h4>Paraquedas Principal</h4>
+                            <p>Revisado e dobrado corretamente</p>
+                        </div>
+                        <div class="gear-item">
+                            <div class="icon">🎒</div>
+                            <h4>Paraquedas de Reserva</h4>
+                            <p>Obrigatório e inspecionado</p>
+                        </div>
+                        <div class="gear-item">
+                            <div class="icon">⛑️</div>
+                            <h4>Capacete</h4>
+                            <p>Homologado para paraquedismo</p>
+                        </div>
+                        <div class="gear-item">
+                            <div class="icon">🥽</div>
+                            <h4>Óculos</h4>
+                            <p>Proteção contra vento</p>
+                        </div>
+                        <div class="gear-item">
+                            <div class="icon">🧤</div>
+                            <h4>Luvas</h4>
+                            <p>Proteção na abertura</p>
+                        </div>
+                        <div class="gear-item">
+                            <div class="icon">👢</div>
+                            <h4>Botas</h4>
+                            <p>Cano alto, sem cadarços soltos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="danger-box">
+                    <h3>🚨 Procedimentos de Emergência</h3>
+                    <ul>
+                        <li><strong>Pane total (mal funcionamento):</strong> Altitude de decisão é 600m (2.000ft) - ative o reserva IMEDIATAMENTE se o principal não abrir</li>
+                        <li><strong>Abertura lenta:</strong> Se não houver abertura em 5 segundos, puxe o cabo de corte e ative o reserva</li>
+                        <li><strong>Colisão em queda livre:</strong> Gire 180° e afaste-se imediatamente</li>
+                        <li><strong>Pane parcial (linhas torcidas):</strong> Tente desembaraçar até 300m, senão corte e ative reserva</li>
+                        <li><strong>Velocidade excessiva:</strong> Nunca exceda 200 km/h em queda livre</li>
+                        <li><strong>Colapso de células:</strong> Se o paraquedas começar a fechar, acelere a queda para reinflar</li>
+                        <li><strong>Reserva:</strong> Puxe o cabo vermelho (corte) antes do cabo amarelo (reserva)</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3>📋 Fases do Salto (AFF - Método de Ensino)</h3>
+                    <div class="step-box">
+                        <span class="step-number">1</span>
+                        <strong>Saída da aeronave:</strong> Posição corporal correta, cabeça erguida, arco no corpo
+                    </div>
+                    <div class="step-box">
+                        <span class="step-number">2</span>
+                        <strong>Estabilização:</strong> Queda livre estável a 200 km/h, referências visuais
+                    </div>
+                    <div class="step-box">
+                        <span class="step-number">3</span>
+                        <strong>Manobras básicas:</strong> Giro, avanço, recuo - usando braços e pernas como lemes
+                    </div>
+                    <div class="step-box">
+                        <span class="step-number">4</span>
+                        <strong>Altitude de abertura:</strong> 1200m (4.000ft) para iniciantes, 900m (3.000ft) experientes
+                    </div>
+                    <div class="step-box">
+                        <span class="step-number">5</span>
+                        <strong>Procedimento de pouso:</strong> Pernas para cima, rolar no chão, nunca travar joelhos
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <h3>🌤️ Condições Meteorológicas</h3>
+                    <ul>
+                        <li><strong>Vento:</strong> Máximo 20 km/h no solo, 30 km/h em altitude</li>
+                        <li><strong>Nuvens:</strong> Não salte se não conseguir ver o solo (salto IFR proibido)</li>
+                        <li><strong>Chuva:</strong> Evite - dificulta visibilidade e machuca na queda livre</li>
+                        <li><strong>Turbulência:</strong> Evite saltar próximo a tempestades ou nuvens de desenvolvimento vertical</li>
+                        <li><strong>Temperatura:</strong> Diminui 6,5°C a cada 1000m de altitude</li>
+                        <li><strong>Pressão atmosférica:</strong> Afeta a altitude indicada do altímetro - sempre calibre antes do salto</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3>🎯 Regras de Segurança no Solo</h3>
+                    <ul>
+                        <li><strong>Área de pouso:</strong> Livre de obstáculos, mínimo 200m de raio livre</li>
+                        <li><strong>Vento de superfície:</strong> Sempre a favor para o pouso final</li>
+                        <li><strong>Prioridade:</strong> Quem está mais baixo tem preferência - olhe antes de virar</li>
+                        <li><strong>Distância entre paraquedistas:</strong> Mínimo 5 segundos de separação na saída</li>
+                        <li><strong>Comunicação:</strong> Rádio obrigatório em saltos de grupo ou competições</li>
+                    </ul>
+                </div>
+                
+                <button class="btn btn-primary" id="btn-ir-prova">
+                    Fazer Prova de Certificação →
+                </button>
+            </div>
+        </div>
+        
+        <div id="tab-prova" class="hidden">
+            <div class="card" id="prova-bloqueada">
+                <div class="timer-blocked">
+                    <h2>⏰ Acesso Bloqueado</h2>
+                    <p>Você já realizou o curso recentemente.</p>
+                    <p>Aguarde <span class="countdown" id="countdown">24:00:00</span> para refazer.</p>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                        Ou entre com outro ID para fazer o curso agora.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="card hidden" id="prova-container">
+                <h2 class="section-title">📝 Prova de Certificação</h2>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress" style="width: 0%"></div>
+                </div>
+                
+                <p style="margin-bottom: 25px; color: #666;">
+                    Responda todas as questões corretamente para obter sua licença de paraquedista.
+                    <strong>Você precisa de 80% para passar.</strong>
+                </p>
+                
+                <div id="quiz-container"></div>
+                
+                <div style="display: flex; gap: 10px; margin-top: 30px;">
+                    <button class="btn btn-secondary" id="btn-voltar-curso">← Voltar ao Curso</button>
+                    <button class="btn btn-primary" id="btn-finalizar-prova">
+                        Finalizar Prova
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card hidden" id="resultado-container">
+                <div id="resultado-content"></div>
+            </div>
+        </div>
+        
+        <div id="tab-historico" class="hidden">
+            <div class="card">
+                <h2 class="section-title">📚 Histórico de Certificações</h2>
+                <div id="history-list">
+                    <div style="text-align: center; padding: 40px; color: #888;">
+                        <h3>Nenhuma certificação registrada</h3>
+                        <p>Complete o curso para ver seu histórico aqui</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const bancoQuestoes = [
+            {
+                id: 1,
+                pergunta: "Qual é a altitude de decisão para pane total (mal funcionamento)?",
+                categoria: "Emergência",
+                opcoes: [
+                    { texto: "300 metros", valor: 0 },
+                    { texto: "600 metros (2.000ft)", valor: 2 },
+                    { texto: "900 metros", valor: 1 }
+                ]
+            },
+            {
+                id: 2,
+                pergunta: "Qual a ordem correta para ativar o paraquedas de reserva?",
+                categoria: "Emergência",
+                opcoes: [
+                    { texto: "Reserva primeiro, depois corte", valor: 0 },
+                    { texto: "Corte (vermelho) primeiro, depois reserva (amarelo)", valor: 2 },
+                    { texto: "Apenas puxe o reserva diretamente", valor: 1 }
+                ]
+            },
+            {
+                id: 3,
+                pergunta: "Qual a altitude padrão de abertura para iniciantes?",
+                categoria: "Procedimentos",
+                opcoes: [
+                    { texto: "900 metros (3.000ft)", valor: 1 },
+                    { texto: "1.200 metros (4.000ft)", valor: 2 },
+                    { texto: "600 metros (2.000ft)", valor: 0 }
+                ]
+            },
+            {
+                id: 4,
+                pergunta: "Qual a velocidade máxima recomendada em queda livre?",
+                categoria: "Segurança",
+                opcoes: [
+                    { texto: "150 km/h", valor: 1 },
+                    { texto: "200 km/h", valor: 2 },
+                    { texto: "250 km/h", valor: 0 }
+                ]
+            },
+            {
+                id: 5,
+                pergunta: "O que fazer se o paraquedas não abrir em 5 segundos?",
+                categoria: "Emergência",
+                opcoes: [
+                    { texto: "Esperar mais tempo", valor: 0 },
+                    { texto: "Puxar o cabo de corte e ativar o reserva", valor: 2 },
+                    { texto: "Tentar puxar o cabo de abertura novamente", valor: 1 }
+                ]
+            },
+            {
+                id: 6,
+                pergunta: "Qual a posição correta de pouso?",
+                categoria: "Técnica",
+                opcoes: [
+                    { texto: "Pernas esticadas, travar joelhos", valor: 0 },
+                    { texto: "Pernas para cima, rolar no chão", valor: 2 },
+                    { texto: "Cair de costas", valor: 1 }
+                ]
+            },
+            {
+                id: 7,
+                pergunta: "Qual o limite de vento no solo para saltar?",
+                categoria: "Meteorologia",
+                opcoes: [
+                    { texto: "10 km/h", valor: 0 },
+                    { texto: "20 km/h", valor: 2 },
+                    { texto: "40 km/h", valor: 1 }
+                ]
+            },
+            {
+                id: 8,
+                pergunta: "O que significa AFF no paraquedismo?",
+                categoria: "Conceitos",
+                opcoes: [
+                    { texto: "Advanced Free Fall (Queda Livre Avançada)", valor: 0 },
+                    { texto: "Accelerated Free Fall (Queda Livre Acelerada - método de ensino)", valor: 2 },
+                    { texto: "Automatic Fall Function (Função de Queda Automática)", valor: 1 }
+                ]
+            },
+            {
+                id: 9,
+                pergunta: "Quem tem prioridade no tráfego de pouso?",
+                categoria: "Regras",
+                opcoes: [
+                    { texto: "Quem está mais alto", valor: 0 },
+                    { texto: "Quem está mais baixo", valor: 2 },
+                    { texto: "Quem chegou primeiro na área", valor: 1 }
+                ]
+            },
+            {
+                id: 10,
+                pergunta: "Qual a temperatura aproximada a 3.000m de altitude?",
+                categoria: "Meteorologia",
+                opcoes: [
+                    { texto: "Igual ao solo", valor: 0 },
+                    { texto: "19,5°C mais fria que o solo (6,5°C/1000m)", valor: 2 },
+                    { texto: "10°C mais quente", valor: 1 }
+                ]
+            },
+            {
+                id: 11,
+                pergunta: "Qual a separação mínima entre paraquedistas na saída?",
+                categoria: "Segurança",
+                opcoes: [
+                    { texto: "1 segundo", valor: 0 },
+                    { texto: "5 segundos", valor: 2 },
+                    { texto: "10 segundos", valor: 1 }
+                ]
+            },
+            {
+                id: 12,
+                pergunta: "O que fazer em caso de colisão em queda livre?",
+                categoria: "Emergência",
+                opcoes: [
+                    { texto: "Segurar o outro paraquedista", valor: 0 },
+                    { texto: "Girar 180° e afastar-se imediatamente", valor: 2 },
+                    { texto: "Abrir o paraquedas imediatamente", valor: 1 }
+                ]
+            },
+            {
+                id: 13,
+                pergunta: "O que é pane parcial?",
+                categoria: "Problemas",
+                opcoes: [
+                    { texto: "Paraquedas totalmente fechado", valor: 0 },
+                    { texto: "Paraquedas aberto com linhas torcidas ou células colapsadas", valor: 2 },
+                    { texto: "Queda livre instável", valor: 1 }
+                ]
+            },
+            {
+                id: 14,
+                pergunta: "Por que não se deve saltar em nuvens densas?",
+                categoria: "Meteorologia",
+                opcoes: [
+                    { texto: "Fica mais frio", valor: 0 },
+                    { texto: "Perda de referência visual do solo (perigo de colisão)", valor: 2 },
+                    { texto: "O paraquedas molha", valor: 1 }
+                ]
+            },
+            {
+                id: 15,
+                pergunta: "Qual a área mínima recomendada para pouso?",
+                categoria: "Segurança",
+                opcoes: [
+                    { texto: "50m de raio", valor: 0 },
+                    { texto: "200m de raio livre de obstáculos", valor: 2 },
+                    { texto: "10m de raio", valor: 1 }
+                ]
+            }
+        ];
+
+        let questoesSelecionadas = [];
+        let respostas = {};
+        let alunoAtual = null;
+        let historico = [];
+        let bloqueios = {};
+
+        try {
+            const savedHist = localStorage.getItem('paraquedas_historico_realrp');
+            const savedBlock = localStorage.getItem('paraquedas_bloqueios_realrp');
+            if (savedHist) historico = JSON.parse(savedHist);
+            if (savedBlock) bloqueios = JSON.parse(savedBlock);
+        } catch (e) {}
+
+        function verificarBloqueio(id) {
+            if (!bloqueios[id]) return false;
+            const agora = new Date().getTime();
+            return agora < bloqueios[id];
+        }
+
+        function getTempoRestante(id) {
+            if (!bloqueios[id]) return 0;
+            const agora = new Date().getTime();
+            return Math.max(0, bloqueios[id] - agora);
+        }
+
+        function formatarTempo(ms) {
+            const horas = Math.floor(ms / 3600000);
+            const minutos = Math.floor((ms % 3600000) / 60000);
+            const segundos = Math.floor((ms % 60000) / 1000);
+            return `${String(horas).padStart(2,'0')}:${String(minutos).padStart(2,'0')}:${String(segundos).padStart(2,'0')}`;
+        }
+
+        function atualizarCountdown() {
+            if (!alunoAtual) return;
+            const restante = getTempoRestante(alunoAtual.id);
+            document.querySelectorAll('.countdown').forEach(el => {
+                el.textContent = restante > 0 ? formatarTempo(restante) : "00:00:00";
+            });
+        }
+
+        setInterval(atualizarCountdown, 1000);
+
+        function acessarCurso() {
+            document.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
+            
+            const nome = document.getElementById('nome').value.trim();
+            const id = document.getElementById('id-personagem').value.trim();
+            const idade = document.getElementById('idade').value;
+
+            let erro = false;
+            if (!nome) { document.getElementById('group-nome').classList.add('error'); erro = true; }
+            if (!id) { document.getElementById('group-id').classList.add('error'); erro = true; }
+            if (!idade || idade < 18 || idade > 80) { document.getElementById('group-idade').classList.add('error'); erro = true; }
+
+            if (erro) return;
+
+            alunoAtual = { nome, id, idade };
+
+            if (verificarBloqueio(id)) {
+                mostrarProvaBloqueada();
+            } else {
+                document.getElementById('cadastro-card').classList.add('hidden');
+                document.getElementById('curso-content').classList.remove('hidden');
+            }
+        }
+
+        function mostrarProvaBloqueada() {
+            document.getElementById('cadastro-card').classList.add('hidden');
+            document.getElementById('curso-content').classList.add('hidden');
+            document.getElementById('prova-bloqueada').classList.remove('hidden');
+            atualizarCountdown();
+            mostrarTab('prova');
+        }
+
+        function irParaProva() {
+            if (!alunoAtual) return;
+            
+            if (verificarBloqueio(alunoAtual.id)) {
+                mostrarProvaBloqueada();
+                return;
+            }
+
+            questoesSelecionadas = [...bancoQuestoes].sort(() => Math.random() - 0.5).slice(0, 10);
+            respostas = {};
+            
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+            
+            questoesSelecionadas.forEach((q, idx) => {
+                const div = document.createElement('div');
+                div.className = 'quiz-box';
+                div.innerHTML = `
+                    <div class="quiz-header">
+                        <div class="quiz-number">${idx + 1}</div>
+                        <div class="quiz-question">${q.pergunta}</div>
+                        <div class="quiz-category">${q.categoria}</div>
+                    </div>
+                    <div class="options-container" data-questao="${q.id}">
+                        ${q.opcoes.map((op, i) => `
+                            <button class="option-btn" data-valor="${op.valor}" data-idx="${i}">
+                                <span class="option-label">${['A','B','C'][i]})</span>
+                                ${op.texto}
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            document.querySelectorAll('.options-container').forEach(cont => {
+                const questaoId = parseInt(cont.dataset.questao);
+                cont.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const valor = parseInt(this.dataset.valor);
+                        respostas[questaoId] = valor;
+                        cont.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+                        this.classList.add('selected');
+                        atualizarProgresso();
+                    });
+                });
+            });
+
+            document.getElementById('prova-bloqueada').classList.add('hidden');
+            document.getElementById('prova-container').classList.remove('hidden');
+            document.getElementById('resultado-container').classList.add('hidden');
+            atualizarProgresso();
+            mostrarTab('prova');
+        }
+
+        function atualizarProgresso() {
+            const respondidas = Object.keys(respostas).length;
+            document.getElementById('progress').style.width = (respondidas / 10 * 100) + '%';
+        }
+
+        function finalizarProva() {
+            if (Object.keys(respostas).length < 10) {
+                alert('Responda todas as 10 questões!');
+                return;
+            }
+
+            const pontuacao = Object.values(respostas).reduce((a, b) => a + b, 0);
+            const percentual = (pontuacao / 20) * 100;
+            const aprovado = percentual >= 80;
+
+            bloqueios[alunoAtual.id] = new Date().getTime() + (24 * 60 * 60 * 1000);
+            try { localStorage.setItem('paraquedas_bloqueios_realrp', JSON.stringify(bloqueios)); } catch (e) {}
+
+            const resultado = {
+                ...alunoAtual,
+                pontuacao,
+                percentual: Math.round(percentual),
+                aprovado,
+                data: new Date().toLocaleString('pt-BR'),
+                respostas: questoesSelecionadas.map(q => ({
+                    pergunta: q.pergunta,
+                    categoria: q.categoria,
+                    acertou: respostas[q.id] === 2
+                }))
+            };
+
+            historico.unshift(resultado);
+            try { localStorage.setItem('paraquedas_historico_realrp', JSON.stringify(historico)); } catch (e) {}
+
+            mostrarResultado(resultado);
+        }
+
+        function mostrarResultado(resultado) {
+            let html = '';
+            
+            if (resultado.aprovado) {
+                html += `
+                    <div class="certificado">
+                        <div class="certificado-icon">🪂</div>
+                        <h2>✅ CERTIFICADO APROVADO</h2>
+                        <p style="font-size: 1.2rem; color: #065f46; margin-bottom: 10px;">
+                            <strong>${resultado.nome}</strong>
+                        </p>
+                        <p style="color: #047857;">ID: ${resultado.id} | Nota: ${resultado.percentual}%</p>
+                        <p style="margin-top: 15px; color: #059669;">Licença de Paraquedista - REAL RP</p>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: #6b7280;">${resultado.data}</p>
+                    </div>
+                `;
+            } else {
+                html += `
+                    <div class="timer-blocked" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);">
+                        <h2>❌ REPROVADO</h2>
+                        <p>Você obteve <strong>${resultado.percentual}%</strong> (mínimo: 80%)</p>
+                        <p style="margin-top: 15px;">Estude mais e tente novamente em 24 horas.</p>
+                    </div>
+                `;
+            }
+
+            html += `
+                <div style="background: #f9fafb; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 style="color: #581c87; margin-bottom: 15px;">Resumo da Prova:</h3>
+                    <p><strong>Acertos:</strong> ${resultado.respostas.filter(r => r.acertou).length}/10</p>
+                    <p><strong>Pontuação:</strong> ${resultado.pontuacao}/20</p>
+                    <p><strong>Status:</strong> ${resultado.aprovado ? 'APROVADO' : 'REPROVADO'}</p>
+                </div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-secondary" onclick="location.reload()">Novo Aluno</button>
+                    <button class="btn btn-success" onclick="exportarResultado()">📄 Exportar</button>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background: #fef3c7; border-radius: 10px; text-align: center;">
+                    <p style="color: #92400e;">
+                        ⏰ Próxima tentativa disponível em: <span class="countdown">24:00:00</span>
+                    </p>
+                </div>
+            `;
+
+            document.getElementById('resultado-content').innerHTML = html;
+            document.getElementById('prova-container').classList.add('hidden');
+            document.getElementById('resultado-container').classList.remove('hidden');
+            atualizarCountdown();
+            atualizarHistorico();
+        }
+
+        function exportarResultado() {
+            if (historico.length === 0) return;
+            const d = historico[0];
+            
+            let txt = `═══════════════════════════════════════\n`;
+            txt += `   REAL RP - CERTIFICADO DE PARAQUEDISTA\n`;
+            txt += `   Curso de Paraquedismo 🪂\n`;
+            txt += `═══════════════════════════════════════\n\n`;
+            txt += `ALUNO: ${d.nome}\n`;
+            txt += `ID: ${d.id}\n`;
+            txt += `DATA: ${d.data}\n\n`;
+            txt += `RESULTADO: ${d.aprovado ? 'APROVADO ✅' : 'REPROVADO ❌'}\n`;
+            txt += `PONTUAÇÃO: ${d.percentual}% (${d.pontuacao}/20)\n`;
+            txt += `ACERTOS: ${d.respostas.filter(r => r.acertou).length}/10\n\n`;
+            if (d.aprovado) {
+                txt += `LICENÇA DE PARAQUEDISTA CONCEDIDA\n`;
+                txt += `Válida no servidor REAL RP\n`;
+                txt += `Tipo de salto autorizado: Solo AFF\n`;
+            }
+            txt += `\n═══════════════════════════════════════`;
+            
+            const blob = new Blob([txt], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Certificado_Paraquedas_${d.nome.replace(/\s+/g, '_')}_${d.id}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function atualizarHistorico() {
+            const container = document.getElementById('history-list');
+            if (historico.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #888;">
+                        <h3>Nenhuma certificação registrada</h3>
+                        <p>Complete o curso para ver seu histórico aqui</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = historico.map((h) => {
+                return `
+                    <div class="history-item">
+                        <div class="history-header">
+                            <span class="history-name">${h.nome} (ID: ${h.id})</span>
+                            <span class="${h.aprovado ? 'score-high' : 'score-low'}">${h.percentual}% - ${h.aprovado ? 'APROVADO' : 'REPROVADO'}</span>
+                        </div>
+                        <div class="history-date">${h.data}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function mostrarTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+            
+            document.getElementById('tab-curso').classList.add('hidden');
+            document.getElementById('tab-prova').classList.add('hidden');
+            document.getElementById('tab-historico').classList.add('hidden');
+            document.getElementById(`tab-${tab}`).classList.remove('hidden');
+            
+            if (tab === 'historico') atualizarHistorico();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('btn-acessar-curso').addEventListener('click', acessarCurso);
+            document.getElementById('btn-ir-prova').addEventListener('click', irParaProva);
+            document.getElementById('btn-voltar-curso').addEventListener('click', () => mostrarTab('curso'));
+            document.getElementById('btn-finalizar-prova').addEventListener('click', finalizarProva);
+            
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => mostrarTab(tab.dataset.tab));
+            });
+            
+            atualizarHistorico();
+        });
+    </script>
+</body>
+</html>
